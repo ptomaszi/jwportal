@@ -12,8 +12,8 @@ import * as Auth from '../../auth/actions/auth';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-layout>
-      <app-sidenav [open]="showSidenav$ | async">
-        <app-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book">
+      <app-sidenav [open]="showSidenav$ | async" (closeSideNav)="closeSidenav()">
+        <app-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/accounts" icon="book">
           Accounts
         </app-nav-item>
         <app-nav-item

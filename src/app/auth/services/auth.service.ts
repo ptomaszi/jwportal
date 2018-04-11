@@ -14,7 +14,7 @@ export class AuthService {
 
     const observable = Observable.fromPromise(promise);
 
-        return observable;
+    return observable;
   }
 
   logout() {

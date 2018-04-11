@@ -21,7 +21,8 @@ export class AuthEffects {
     switchMap((payload: Authenticate) => {
       return this.authService.login(payload).pipe(
         map((user: User) => {
-          return new LoginSuccess({ user });
+          const myUser: User = {email: user.email};
+          return new LoginSuccess({ user: myUser });
       }
       ),
         catchError(error => of(new LoginFailure(error)))

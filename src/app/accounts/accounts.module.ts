@@ -3,18 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HomeComponent } from './containers/home.component';
+import { AccountComponent } from './containers/account/account.component';
 import { MaterialModule } from '../material';
-
-import { reducers } from './reducers';
 
 @NgModule({
   imports: [
       CommonModule,
       MaterialModule,
-      RouterModule.forChild([{ path: '', component: HomeComponent }]),
-      StoreModule.forFeature('home', reducers),
+      RouterModule.forChild([{ path: '', component: AccountComponent }]),
     ],
-  declarations: [ HomeComponent ]
+  declarations: [ AccountComponent ]
 })
-export class HomeModule {}
+export class AccountModule {}

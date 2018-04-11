@@ -3,10 +3,15 @@ import { AuthGuard } from './auth/services/auth-guard.service';
 import { NotFoundPageComponent } from './core/containers/not-found-page';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'home',
     loadChildren: './home/home.module#HomeModule',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'accounts',
+    loadChildren: './accounts/accounts.module#AccountModule',
     canActivate: [AuthGuard],
   },
   { path: '**', component: NotFoundPageComponent },
