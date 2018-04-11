@@ -11,8 +11,7 @@ export const routes: Routes = [
   },
   {
     path: 'accounts',
-    loadChildren: './accounts/accounts.module#AccountModule',
-    canActivate: [AuthGuard],
+    loadChildren: './accounts/accounts.module#AccountModule'
   },
   { path: '**', component: NotFoundPageComponent },
 ];

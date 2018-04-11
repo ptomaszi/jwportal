@@ -13,7 +13,7 @@ import * as Auth from '../../auth/actions/auth';
   template: `
     <app-layout>
       <app-sidenav [open]="showSidenav$ | async" (closeSideNav)="closeSidenav()">
-        <app-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/accounts" icon="book">
+        <app-nav-item (navigate)="closeSidenav()" routerLink="/accounts" icon="book">
           Accounts
         </app-nav-item>
         <app-nav-item
@@ -31,7 +31,6 @@ import * as Auth from '../../auth/actions/auth';
       <app-toolbar (openMenu)="openSidenav()">
         App portal
       </app-toolbar>
-
       <router-outlet></router-outlet>
     </app-layout>
   `,

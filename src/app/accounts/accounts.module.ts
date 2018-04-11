@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AccountComponent } from './containers/account/account.component';
+import { AddReceiptComponent } from './components/add-receipt.component';
 import { MaterialModule } from '../material';
 
 @NgModule({
@@ -12,6 +13,6 @@ import { MaterialModule } from '../material';
       MaterialModule,
       RouterModule.forChild([{ path: '', component: AccountComponent }]),
     ],
-  declarations: [ AccountComponent ]
+  declarations: [ AccountComponent, AddReceiptComponent ]
 })
 export class AccountModule {}
