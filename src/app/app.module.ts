@@ -15,6 +15,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
@@ -27,11 +28,14 @@ import { CustomRouterStateSerializer } from './shared/utils';
 import { AppComponent } from './core/containers/app';
 import { environment } from '../environments/environment';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes, { useHash: true }),
     StoreModule.forRoot(reducers, { metaReducers }),
@@ -55,6 +59,7 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    AngularFireDatabase,
   ],
   bootstrap: [AppComponent],
 })

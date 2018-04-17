@@ -1,0 +1,45 @@
+<div>
+  <mat-form-field>
+    <mat-select placeholder="Select a month" [(value)]="month">
+      <mat-option *ngFor="let month of months" [value]="month.value">
+        {{ month.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Select a year" [(value)]="year">
+      <mat-option *ngFor="let year of years" [value]="year.value">
+        {{ year.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+  <button mat-raised-button color="primary" (click)="performSearch()">Search</button>
+</div>
+<br/>
+<div>
+  <mat-card *ngFor="let receipt of receipts">
+    <mat-card-header>
+        <mat-toolbar>Receipt - {{receipt.day}}/{{receipt.month}}/{{receipt.year}}</mat-toolbar>      
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>      
+        <mat-list-item>
+        Congregation: £{{receipt.congregation}}
+      </mat-list-item>
+      <mat-list-item>
+        Worldwide: £{{receipt.worldWide}}
+      </mat-list-item>
+      <mat-list-item>
+        Branch: £{{receipt.branch}}
+      </mat-list-item>
+      <mat-list-item>
+        Other: £{{receipt.other}}
+      </mat-list-item>
+      <mat-list-item class="total">
+        <b class="total-text">Total: £{{receipt.congregation + receipt.worldWide + receipt.branch + receipt.other}}</b>
+      </mat-list-item>
+    </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
