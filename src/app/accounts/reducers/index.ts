@@ -43,9 +43,15 @@ export const getFilter = createSelector(getSummary, fromSummary.getFilter);
 
 export const getAllReceipts = createSelector(
     getReceiptData,
-    fromReceipt.getAllReceipts,
+    fromReceipt.getAllReceipts);
+
+export const getFilteredReceipts = createSelector(
+    getAllReceipts,
     getFilter,
-    (data, receipts, filter) => receipts.filter(x => x.month === filter.month));
+    (receipts, filter) => {
+        return receipts.filter(x => x.month === filter.month);
+    }
+);
 
 export const getMonths = createSelector(getSummary, fromSummary.getMonths);
 export const getYears = createSelector(getSummary, fromSummary.getYears);

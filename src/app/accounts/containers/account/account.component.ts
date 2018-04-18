@@ -24,7 +24,7 @@ export class AccountComponent implements OnInit {
     this.$receipt = store.pipe(select(fromReceipt.getReceiptToAdd));
     this.$months = store.pipe(select(fromReceipt.getMonths));
     this.$years = store.pipe(select(fromReceipt.getYears));
-    this.$receipts = store.pipe(select(fromReceipt.getAllReceipts));
+    this.$receipts = store.pipe(select(fromReceipt.getFilteredReceipts));
     this.$filter = store.pipe(select(fromReceipt.getFilter));
   }
 
