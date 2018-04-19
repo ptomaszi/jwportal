@@ -1,0 +1,18 @@
+<div>
+  <mat-form-field>
+    <mat-select placeholder="Select a month" [(value)]="month">
+      <mat-option *ngFor="let month of months" [value]="month.value">
+        {{ month.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Select a year" [(value)]="year">
+      <mat-option *ngFor="let year of years" [value]="year.value">
+        {{ year.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+  <button mat-raised-button color="primary" (click)="performSearch()">Search</button>
+</div>

@@ -6,11 +6,20 @@ import { ReceiptFilter } from '../../models/receipt-filter';
 @Component({
     selector: 'app-receipt-summary',
     templateUrl: './receipt-summary.component.html',
-    styles: ['mat-card {margin: 15px;} .total {position: absolute; right:0} .total-text {margin-bottom: 50px;}']
+    styles: [
+        `mat-card {
+            margin: 15px;
+            width: 20%;
+            display: inline-block;
+        }
+        .total {
+            position: absolute;
+            right:0
+        }
+        .total-text {margin-bottom: 50px;}`
+        ]
 })
-export class ReceiptSummaryComponent implements OnInit {
-    month: number;
-    year: number;
+export class ReceiptSummaryComponent {
     @Input() receipts: Array<Receipt>;
     @Input() years: Array<DropDownEntry>;
     @Input() months: Array<DropDownEntry>;
@@ -20,12 +29,7 @@ export class ReceiptSummaryComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
-        this.month = this.filter.month;
-        this.year = this.filter.year;
-    }
-
-    performSearch() {
-        this.search.emit({month: this.month, year: this.year});
+    performSearch(filter: ReceiptFilter) {
+        this.search.emit(filter);
     }
 }

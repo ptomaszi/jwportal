@@ -15,6 +15,8 @@ import { ReceiptEffects } from './effects/receipt';
 import { ReceiptSummaryEffects } from './effects/receipt-summary';
 import { ReceiptService } from './services/receipt.service';
 import { ReceiptSummaryService } from './services/receipt-summary.service';
+import { ReceiptFilterComponent } from './components/receipt-filter/receipt-filter.component';
+import { ReceiptDetailsComponent } from './components/receipt-details/receipt-details.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,13 @@ import { ReceiptSummaryService } from './services/receipt-summary.service';
       StoreModule.forFeature('receipts', reducers),
       EffectsModule.forFeature([ReceiptEffects, ReceiptSummaryEffects]),
     ],
-  declarations: [ AccountComponent, AddReceiptComponent, ReceiptSummaryComponent ],
+  declarations: [
+    AccountComponent,
+    AddReceiptComponent,
+    ReceiptSummaryComponent,
+    ReceiptFilterComponent,
+    ReceiptDetailsComponent
+  ],
   providers: [ReceiptService, ReceiptSummaryService]
 })
 export class AccountModule {}
