@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { DropDownEntry } from '../../shared/models/dropdown-entry';
 import { ReceiptFilter } from '../models/receipt-filter';
 import { Receipt } from '../models/receipt';
+import { ReceiptSummary } from '../models/receipt-summary';
 
 export enum ReceiptSummaryActionTypes {
     GetMonths = '[Receipt Summary] Get Months',
@@ -9,6 +10,7 @@ export enum ReceiptSummaryActionTypes {
     GetYearsComplete = '[Receipt Summary] Get Years Complete',
     UpdateFilter = '[Receipt Summary] Update Filter',
     CalculateTotal = '[Receipt Summary] Calculate Total',
+    CalculateTotalComplete = '[Receipt Summary] Calculate Total Complete',
 }
 
 export class GetMonths implements Action {
@@ -34,9 +36,15 @@ export class CalculateTotal implements Action {
     constructor(public payload: Receipt[]) {}
 }
 
+export class CalculateTotalComplete implements Action {
+    readonly type = ReceiptSummaryActionTypes.CalculateTotalComplete;
+    constructor(public payload: ReceiptSummary) {}
+}
+
 export type ReceiptSummaryActions =
     GetMonths |
     GetYears |
     GetYearsComplete |
     UpdateFilter |
-    CalculateTotal;
+    CalculateTotal |
+    CalculateTotalComplete;

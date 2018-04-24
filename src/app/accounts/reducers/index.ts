@@ -55,3 +55,4 @@ export const getFilteredReceipts = createSelector(
 
 export const getMonths = createSelector(getSummary, fromSummary.getMonths);
 export const getYears = createSelector(getSummary, fromSummary.getYears);
+export const getCalculations = createSelector(getSummary, fromSummary.getCalculations);

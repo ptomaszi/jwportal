@@ -1,7 +1,7 @@
 <mat-tab-group>
     <mat-tab label="Receipts">
         <mat-accordion>
-            <mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   New Receipt
@@ -20,6 +20,7 @@
                   [months]="$months | async" 
                   [years]="$years | async"
                   [filter]="$filter | async"
+                  [calculations]="$summary | async"
                   (search)="searchReceipts($event)">               
                 </app-receipt-summary>
               </mat-expansion-panel>

@@ -4,11 +4,13 @@ import { Receipt } from '../models/receipt';
 import { ReceiptSummaryActions, ReceiptSummaryActionTypes } from '../actions/receipt-summary';
 import { DropDownEntry } from '../../shared/models/dropdown-entry';
 import { ReceiptFilter } from '../models/receipt-filter';
+import { ReceiptSummary } from '../models/receipt-summary';
 
 export interface State {
     months: Array<DropDownEntry>;
     years: Array<DropDownEntry>;
     filter: ReceiptFilter;
+    calculations: ReceiptSummary;
 }
 
 export const initialState: State = {
@@ -27,7 +29,8 @@ export const initialState: State = {
         {value: 10, viewValue: 'October'},
         {value: 11, viewValue: 'November'},
         {value: 12, viewValue: 'December'},
-    ]
+    ],
+    calculations: {total: 0, totalCongregation: 0, totalWorldWide: 0, totalOther: 0, totalBranch: 0}
 };
 
 export function reducer(state = initialState, action: ReceiptSummaryActions): State {
@@ -38,6 +41,9 @@ export function reducer(state = initialState, action: ReceiptSummaryActions): St
         case ReceiptSummaryActionTypes.GetYearsComplete: {
             return {...state,  years: action.payload};
         }
+        case ReceiptSummaryActionTypes.CalculateTotalComplete: {
+            return {...state, calculations: action.payload};
+        }
         default: {
             return state;
         }
@@ -47,3 +53,4 @@ export function reducer(state = initialState, action: ReceiptSummaryActions): St
 export const getYears = (state: State) => state.years;
 export const getMonths = (state: State) => state.months;
 export const getFilter = (state: State) => state.filter;
+export const getCalculations = (state: State) => state.calculations;

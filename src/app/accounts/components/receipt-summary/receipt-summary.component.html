@@ -4,7 +4,52 @@
 </div>
 <br/>
 <div>
-  <mat-card *ngFor="let receipt of receipts">
-    <app-receipt-details [receipt]="receipt"></app-receipt-details>
-  </mat-card>
+  <mat-table #table [dataSource]="receipts">
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.day}}/{{element.month}}/{{element.year}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="worldwide">
+      <mat-header-cell *matHeaderCellDef> Worldwide </mat-header-cell>
+      <mat-cell *matCellDef="let element"> £{{element.worldWide}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="congregation">
+      <mat-header-cell *matHeaderCellDef> Congregation </mat-header-cell>
+      <mat-cell *matCellDef="let element"> £{{element.congregation}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="branch">
+        <mat-header-cell *matHeaderCellDef> Branch </mat-header-cell>
+        <mat-cell *matCellDef="let element"> £{{element.branch}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="other">
+        <mat-header-cell *matHeaderCellDef> Other </mat-header-cell>
+        <mat-cell *matCellDef="let element"> £{{element.other}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-table [dataSource]="totalDataSource">
+      <ng-container matColumnDef="empty">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element"></mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="totalWorldwide">
+        <mat-header-cell *matHeaderCellDef> <b>Total</b> </mat-header-cell>
+        <mat-cell *matCellDef="let element"> £{{element.totalWorldWide}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="totalCongregation">
+        <mat-header-cell *matHeaderCellDef> <b>Total</b> </mat-header-cell>
+        <mat-cell *matCellDef="let element"> £{{element.totalCongregation}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="totalBranch">
+          <mat-header-cell *matHeaderCellDef> <b>Total</b> </mat-header-cell>
+          <mat-cell *matCellDef="let element"> £{{element.totalBranch}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="totalOther">
+          <mat-header-cell *matHeaderCellDef> <b>Total</b> </mat-header-cell>
+          <mat-cell *matCellDef="let element"> £{{element.totalOther}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedTotalColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedTotalColumns;"></mat-row>
+    </mat-table>
 </div>

@@ -1,5 +1,5 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Receipt } from '../../models/receipt';
 
@@ -19,15 +19,18 @@ export class AddReceiptComponent {
 
     createForm() {
         this.form = this.formBuilder.group({
-            date: new Date(),
-            congregation: '',
-            worldWide: '',
-            branch: '',
-            other: ''
+            date: new FormControl(new Date(), Validators.required),
+            congregation: new FormControl('', Validators.required),
+            worldWide: new FormControl('', Validators.required),
+            branch: new FormControl('', Validators.required),
+            other: new FormControl('', Validators.required)
         });
     }
 
     saveReceipt() {
+        if (!this.form.valid) {
+            return;
+        }
         const receipt: Receipt = {
             id: '0',
             day: new Date(this.form.get('date').value).getDate(),

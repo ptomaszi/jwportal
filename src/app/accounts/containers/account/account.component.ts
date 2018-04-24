@@ -7,6 +7,7 @@ import * as receiptActions from '../../actions/receipt';
 import * as receiptSummaryActions from '../../actions/receipt-summary';
 import { DropDownEntry } from '../../../shared/models/dropdown-entry';
 import { ReceiptFilter } from '../../models/receipt-filter';
+import { ReceiptSummary } from '../../models/receipt-summary';
 
 @Component({
   selector: 'app-account',
@@ -19,6 +20,7 @@ export class AccountComponent implements OnInit {
   $years: Observable<DropDownEntry[]>;
   $months: Observable<DropDownEntry[]>;
   $filter: Observable<ReceiptFilter>;
+  $summary: Observable<ReceiptSummary>;
 
   constructor(private store: Store<fromReceipt.State>) {
     this.$receipt = store.pipe(select(fromReceipt.getReceiptToAdd));
@@ -26,6 +28,7 @@ export class AccountComponent implements OnInit {
     this.$years = store.pipe(select(fromReceipt.getYears));
     this.$receipts = store.pipe(select(fromReceipt.getFilteredReceipts));
     this.$filter = store.pipe(select(fromReceipt.getFilter));
+    this.$summary = store.pipe(select(fromReceipt.getCalculations));
   }
 
   ngOnInit() {

@@ -15,9 +15,12 @@ import {
 } from '../actions/receipt';
 import { Receipt } from '../models/receipt';
 import { AngularFireList } from 'angularfire2/database';
+import { ReceiptFilter } from '../models/receipt-filter';
+import { CalculateTotal } from '../actions/receipt-summary';
 
 @Injectable()
 export class ReceiptEffects {
+  filter: ReceiptFilter;
   @Effect()
   add$ = this.actions$.pipe(
     ofType(ReceiptActionTypes.AddReceipt),
@@ -37,14 +40,23 @@ export class ReceiptEffects {
     get$ = this.actions$.pipe(
       ofType(ReceiptActionTypes.GetReceipts),
       map((action: GetReceipts) => action.payload),
-      switchMap(payload => this.receiptService.get(payload).snapshotChanges()),
-      map((data) => {
+      switchMap(payload => {
+        this.filter = payload;
+        return this.receiptService.get(payload).snapshotChanges();
+      }),
+      map((info) => {
         const receipts: Array<Receipt> = [];
-        data.map(x => {
+        info.map(x => {
               receipts.push({...x.payload.val(), id: x.key});
           });
-        return new GetReceiptsComplete(receipts);
-    }));
+        return receipts.filter(x => x.month === this.filter.month);
+      }
+  ),
+  switchMap(receipts => [
+      new GetReceiptsComplete(receipts),
+      new CalculateTotal(receipts)
+  ])
+);
 
   constructor(
     private actions$: Actions,
