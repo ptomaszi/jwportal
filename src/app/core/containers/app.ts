@@ -13,23 +13,15 @@ import * as Auth from '../../auth/actions/auth';
   template: `
     <app-layout>
       <app-sidenav [open]="showSidenav$ | async" (closeSideNav)="closeSidenav()">
-        <app-nav-item (navigate)="closeSidenav()" routerLink="/accounts" icon="book">
+        <app-nav-item *ngIf="loggedIn$ | async" (navigate)="closeSidenav()" routerLink="/accounts" icon="book">
           Accounts
-        </app-nav-item>
-        <app-nav-item
-            (navigate)="closeSidenav()"
-            *ngIf="loggedIn$ | async" routerLink="/home/public" icon="search">
-          Public
-        </app-nav-item>
-        <app-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
-          Sign In
         </app-nav-item>
         <app-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
           Sign Out
         </app-nav-item>
       </app-sidenav>
-      <app-toolbar (openMenu)="openSidenav()">
-        App portal
+      <app-toolbar [loggedIn]="loggedIn$ | async" (openMenu)="openSidenav()">
+        Peterborough Polish Congregation
       </app-toolbar>
       <router-outlet></router-outlet>
     </app-layout>
