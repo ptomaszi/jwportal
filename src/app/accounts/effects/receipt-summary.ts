@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/observable/of';
-import { tap, map, exhaustMap, switchMap, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ReceiptSummaryService } from '../services/receipt-summary.service';
 import {
   GetYears,
@@ -35,8 +32,6 @@ export class ReceiptSummaryEffects {
   constructor(
     private actions$: Actions,
     private receiptSummaryService: ReceiptSummaryService,
-    private router: Router,
-    private notification: MatSnackBar,
   ) {
   }
 }

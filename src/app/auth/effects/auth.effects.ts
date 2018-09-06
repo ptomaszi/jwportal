@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/observable/of';
-import { tap, map, exhaustMap, switchMap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { tap, map, switchMap, catchError } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 import {
   Login,
@@ -20,7 +20,7 @@ export class AuthEffects {
     map((action: Login) => action.payload),
     switchMap((payload: Authenticate) => {
       return this.authService.login(payload).pipe(
-        map((user: User) => {
+        map((user: any) => {
           const myUser: User = {email: user.email};
           return new LoginSuccess({ user: myUser });
       }

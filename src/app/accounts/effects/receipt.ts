@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/observable/of';
-import { tap, map, exhaustMap, switchMap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map, switchMap, catchError } from 'rxjs/operators';
 import { ReceiptService } from '../services/receipt.service';
 import {
   AddReceipt,
@@ -14,7 +14,6 @@ import {
   ReceiptActionTypes,
 } from '../actions/receipt';
 import { Receipt } from '../models/receipt';
-import { AngularFireList } from 'angularfire2/database';
 import { ReceiptFilter } from '../models/receipt-filter';
 import { CalculateTotal } from '../actions/receipt-summary';
 
@@ -61,7 +60,6 @@ export class ReceiptEffects {
   constructor(
     private actions$: Actions,
     private receiptService: ReceiptService,
-    private router: Router,
     private notification: MatSnackBar,
   ) { }
 }

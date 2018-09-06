@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Receipt } from '../../models/receipt';
 import * as fromReceipt from '../../reducers';
 import * as receiptActions from '../../actions/receipt';
