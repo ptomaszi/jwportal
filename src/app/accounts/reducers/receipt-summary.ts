@@ -1,6 +1,3 @@
-import { createSelector } from '@ngrx/store';
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Receipt } from '../models/receipt';
 import { ReceiptSummaryActions, ReceiptSummaryActionTypes } from '../actions/receipt-summary';
 import { DropDownEntry } from '../../shared/models/dropdown-entry';
 import { ReceiptFilter } from '../models/receipt-filter';
