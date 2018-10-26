@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { DropDownEntry } from '../../../shared/models/dropdown-entry';
-import { Receipt } from '../../models/receipt';
-import { ReceiptFilter } from '../../models/receipt-filter';
-import { ReceiptSummary } from '../../models/receipt-summary';
+import { DropDownEntry } from '../../../../shared/models/dropdown-entry';
+import { Receipt } from '../../../models/receipt';
+import { ReceiptFilter } from '../../../models/receipt-filter';
+import { ReceiptSummary } from '../../../models/receipt-summary';
 
 @Component({
     selector: 'app-receipt-summary',

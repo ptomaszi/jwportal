@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^6.1.7",
     "@angular/platform-browser-dynamic": "^6.1.7",
     "@angular/router": "^6.1.7",
+    "@di/http": "^1.0.31",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/entity": "^6.1.0",
     "@ngrx/router-store": "^6.1.0",

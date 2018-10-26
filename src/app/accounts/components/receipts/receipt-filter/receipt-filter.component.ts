@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
-import { DropDownEntry } from '../../../shared/models/dropdown-entry';
-import { ReceiptFilter } from '../../models/receipt-filter';
+import { DropDownEntry } from '../../../../shared/models/dropdown-entry';
+import { ReceiptFilter } from '../../../models/receipt-filter';
 
 @Component({
     selector: 'app-receipt-filter',

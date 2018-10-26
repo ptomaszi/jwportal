@@ -1,7 +1,7 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { Receipt } from '../../models/receipt';
+import { Receipt } from '../../../models/receipt';
 
 @Component({
     selector: 'app-add-receipt',
